@@ -16,10 +16,7 @@ interface Props {
 
 const PostCard = ({ post }: Props) => {
   return (
-    <div
-      key={post._id}
-      className="card w-fit p-4 border border-base-content/10 rounded-xl font-work"
-    >
+    <div className="card w-fit p-4 border border-base-content/10 rounded-xl font-work">
       <figure>
         <img
           src={urlForImage(post.mainImage).url()}
@@ -68,7 +65,14 @@ const PostCard = ({ post }: Props) => {
               </Link>
             </h5>
           </div>
-          <p className="text-base">July 21, 2023</p>
+          {/* <p className="text-base">July 21, 2023</p> */}
+          <p className="text-base">
+            {new Date(post._createdAt).toLocaleDateString('en-Us', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+            })}
+          </p>
         </div>
       </div>
     </div>
