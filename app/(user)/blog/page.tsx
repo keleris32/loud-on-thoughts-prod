@@ -5,13 +5,27 @@ import PageInfo from '@/components/organism/pageInfo/PageInfo';
 import React from 'react';
 import Header from '@/components/organism/header';
 import Footer from '@/components/organism/footer';
+import { groq } from 'next-sanity';
+import { client } from '@/sanity/lib/client';
 
 export const metadata = {
   title: 'Blog | LoudOnThoughts',
   description: 'Get a glimpse into the mind and insight of the Fantasma',
 };
 
-const BlogListing = () => {
+const query = groq`
+  *[_type=='post'] {
+    ...,
+    author->,
+    categories[]->
+  } | order(_createdAt desc)
+`;
+
+const BlogListing = async () => {
+  const posts: Post[] = await client.fetch(query);
+
+  console.log(posts);
+
   return (
     <main>
       <div className="container mx-auto">
@@ -28,8 +42,8 @@ const BlogListing = () => {
         {/* All posts component */}
         <section className="my-20">
           <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item: any) => (
-              <PostCard key={item} />
+            {posts.map((post) => (
+              <PostCard post={post} />
             ))}
           </div>
           <div className="flex items-center justify-center w-full mt-8">

@@ -3,13 +3,27 @@ import PostCard from '@/components/molecules/card/PostCard';
 import React from 'react';
 import Footer from '@/components/organism/footer';
 import Header from '@/components/organism/header';
+import { groq } from 'next-sanity';
+import { client } from '@/sanity/lib/client';
 
 export const metadata = {
   title: 'Author | LoudOnThoughts',
   description: 'Get a glimpse into the mind and insight of the Fantasma',
 };
 
-const Author = () => {
+const query = groq`
+  *[_type=='post'] {
+    ...,
+    author->,
+    categories[]->
+  } | order(_createdAt desc)
+`;
+
+const Author = async () => {
+  const posts: Post[] = await client.fetch(query);
+
+  console.log(posts);
+
   return (
     <main>
       {/* Author info */}
@@ -24,9 +38,9 @@ const Author = () => {
             Latest Post
           </h3>
           <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item: any, index: number) => (
+            {posts.map((post, index: number) => (
               <div key={index}>
-                <PostCard />
+                <PostCard post={post} />
               </div>
             ))}
           </div>
