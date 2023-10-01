@@ -23,23 +23,23 @@ const query = groq`
 export default async function Home() {
   const posts: Post[] = await client.fetch(query);
 
-  console.log(posts);
+  // console.log(posts);
 
   return (
-    <main className="container mx-auto">
+    <main className="container mx-auto px-3 sm:px-0">
       {/* Banner Component */}
-      <section>
-        <BannerCard />
+      <section className="">
+        <BannerCard posts={posts} />
       </section>
 
       {/* Advertisement Component */}
-      <section className="pt-12">
+      {/* <section className="pt-12">
         <Advertisement />
-      </section>
+      </section> */}
 
       {/* Latest Post */}
       <section className="my-20">
-        <h3 className="text-base-content font-bold text-2xl mb-8 font-work leading-8">
+        <h3 className="text-base-content font-bold text-2xl mt-8 mb-4 font-work leading-8">
           Latest Post
         </h3>
         {/* <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -48,26 +48,28 @@ export default async function Home() {
           ))}
         </div> */}
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts.map((post) => (
-            <div key={post._id}>
-              <PostCard post={post} />
-            </div>
-          ))}
+          {posts.map((post, index) => {
+            return (
+              <div key={post._id}>
+                {index === 0 ? null : <PostCard post={post} />}
+              </div>
+            );
+          })}
         </div>
-        <div className="flex items-center justify-center w-full mt-8">
+        {/* <div className="flex items-center justify-center w-full mt-8">
           <Link
             href={`/blog`}
             className="btn btn-outline btn-secondary text-secondary-content/60 font-work font-medium text-base"
           >
             View All Post
           </Link>
-        </div>
+        </div> */}
       </section>
 
       {/* Advertisement Component */}
-      <section className="mb-24">
+      {/* <section className="mb-24">
         <Advertisement />
-      </section>
+      </section> */}
     </main>
   );
 }

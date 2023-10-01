@@ -13,6 +13,7 @@
    },
    "dependencies": {
       "@heroicons/react": "^2.0.18",
+      "@portabletext/react": "^3.0.9",
       "@sanity/image-url": "^1.0.2",
       "@sanity/vision": "^3.16.7",
       "@types/node": "18.15.0",

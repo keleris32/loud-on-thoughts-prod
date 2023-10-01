@@ -42,7 +42,7 @@ const PostCard = ({ post }: Props) => {
         </div>
         <h3>
           <Link
-            href="/single-post"
+            href={`/post/${post.slug.current}`}
             className="text-base-content hover:text-primary transition-all duration-300 ease-in-out font-semibold text-lg md:text-xl lg:text-2xl mt-2"
           >
             {post.title}
