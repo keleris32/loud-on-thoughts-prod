@@ -1,9 +1,10 @@
 import { FooterDataOne, FooterDataTwo } from '@/data/footerData';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NewsLetter from '@/components/molecules/newsletter/NewsLetter';
 import useMode from '@/utils/themeMode';
 import { Favicon } from '@/components/organism/header';
+import Image from 'next/image';
 
 /**
  * Our Footer is a reusable UI component that used to represent bottom section of any website.
@@ -14,7 +15,18 @@ import { Favicon } from '@/components/organism/header';
  */
 
 const Footer = () => {
-  const { lightMode } = useMode();
+  const { lightMode, theme } = useMode();
+  const [logo, setLogo] = useState('/Loudonthoughtslogo.png');
+
+  const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(false);
+
+  useEffect(() => {
+    if (theme === 'light') {
+      setLogo('/Loudonthoughtslogo.png');
+    } else {
+      setLogo('/LoudonthoughtsWhitelogo.png');
+    }
+  }, [theme]);
 
   return (
     <footer className="bg-base-200 px-5 md:px-0 font-sans">
@@ -93,7 +105,13 @@ const Footer = () => {
         <div className="flex flex-col gap-4 md:gap-0 md:flex-row items-center justify-between py-8 bg-base-200 border-t border-base-content/10">
           <div className="flex items-center justify-between gap-2.5">
             <Link href="/">
-              <Favicon className={`text-base-content`} />
+              {/* <Favicon className={`text-base-content`} /> */}
+              <Image
+                src={logo}
+                width={117.27}
+                height={70}
+                alt="Loudonthoughts logo"
+              />
             </Link>
             <div>
               {/* <h4 className="text-xl text-base-content font-sans">

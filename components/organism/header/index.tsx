@@ -5,6 +5,7 @@ import { headerData } from '@/data/headerData';
 import useMode from '@/utils/themeMode';
 import MobileNav from './MobileNav';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 /**
  * Our Header is a reusable UI component that used to represent top navbar section of any website.
@@ -15,8 +16,17 @@ import Image from 'next/image';
  */
 const Header = () => {
   const { theme, setTheme, themes, hydrationError } = useMode();
+  const [logo, setLogo] = useState('/Loudonthoughtslogo.png');
 
   const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(false);
+
+  useEffect(() => {
+    if (theme === 'light') {
+      setLogo('/Loudonthoughtslogo.png');
+    } else {
+      setLogo('/LoudonthoughtsWhitelogo.png');
+    }
+  }, [theme]);
 
   return (
     <header>
@@ -25,11 +35,7 @@ const Header = () => {
           <div className="col-span-3">
             <Link href={`/`}>
               <Image
-                src={
-                  theme === 'light'
-                    ? '/Loudonthoughtslogo.png'
-                    : '/LoudonthoughtsWhitelogo.png'
-                }
+                src={logo}
                 width={117.27}
                 height={70}
                 alt="Loudonthoughts logo"
