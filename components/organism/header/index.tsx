@@ -23,25 +23,27 @@ const Header = () => {
       <div className="container mx-auto font-work py-3">
         <div className="navbar grid grid-cols-12">
           <div className="col-span-3">
-            <Link href={`/`}>
-              {theme === 'light' ? (
-                //  <Logo className={`text-base-content`} />
+            {theme === 'light' ? (
+              //  <Logo className={`text-base-content`} />
+              <Link href={`/`}>
                 <Image
                   src="/Loudonthoughtslogo.png"
                   width={117.27}
                   height={70}
                   alt="Loudonthoughts logo"
                 />
-              ) : (
-                //  <WhiteLogo className={`text-base-content`} />
+              </Link>
+            ) : (
+              //  <WhiteLogo className={`text-base-content`} />
+              <Link href={`/`}>
                 <Image
                   src="/LoudonthoughtsWhitelogo.png"
                   width={117.27}
                   height={70}
                   alt="Loudonthoughts logo"
                 />
-              )}
-            </Link>
+              </Link>
+            )}
           </div>
           <nav className="hidden xl:block col-span-6">
             <div className=" w-full flex items-center justify-center gap-10">
@@ -59,7 +61,7 @@ const Header = () => {
           </nav>
           <div className="flex items-center justify-end xl:justify-center gap-10 col-span-9 xl:col-span-3">
             {/* Search Block */}
-            <div className="bg-base-200 pl-4 pr-3 py-2 rounded-md hidden sm:flex items-center gap-4">
+            {/* <div className="bg-base-200 pl-4 pr-3 py-2 rounded-md hidden sm:flex items-center gap-4">
               <input
                 type="text"
                 className="outline-none text-base-content bg-base-200 w-28 placeholder:font-work"
@@ -89,7 +91,7 @@ const Header = () => {
                   />
                 </svg>
               </div>
-            </div>
+            </div> */}
             {/* Theme Switcher */}
             {/*<input*/}
             {/*   type="checkbox"*/}

@@ -49,7 +49,7 @@ const BannerCard = ({ posts }: Props) => {
           {posts[0].categories.map((category, index) => (
             <span
               key={index}
-              className="btn no-animation hover:bg-primary hover:text-primary-content bg-primary/5 border-0 text-primary text-sm px-3 py-2 min-h-fit h-fit rounded-md w-fit capitalize font-medium"
+              className="btn !cursor-default no-animation hover:bg-primary hover:text-primary-content bg-primary/5 border-0 text-primary text-sm px-3 py-2 min-h-fit h-fit rounded-md w-fit capitalize font-medium"
             >
               {category.title}
             </span>
@@ -82,13 +82,15 @@ const BannerCard = ({ posts }: Props) => {
               </div>
             </div>
             <h6>
-              <Link
+              {/* <Link
                 href="/author"
                 className="text-base-content/60 text-xs md:text-base font-medium hover:text-primary transition hover:duration-300"
               >
-                {/* Fantasma */}
                 {posts[0].author.name}
-              </Link>
+              </Link> */}
+              <span className="text-base-content/60 text-xs md:text-base font-medium hover:text-primary transition hover:duration-300">
+                {posts[0].author.name}
+              </span>
             </h6>
           </div>
           <p className="text-base-content/60 text-xs md:text-base">

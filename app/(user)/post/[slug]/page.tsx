@@ -27,7 +27,6 @@ const SinglePost = async ({ params: { slug } }: Props) => {
 
   const post: Post[] = await client.fetch(query, { slug });
 
-  console.log('post >>', post);
   return (
     <article>
       {post.length === 0 ? (
@@ -69,13 +68,15 @@ const SinglePost = async ({ params: { slug } }: Props) => {
                       />
                     </div>
                   </div>
-                  <a
+                  {/* <a
                     href="/author"
                     className=" text-xs md:text-sm font-medium hover:text-primary transition hover:duration-300"
                   >
-                    {/* Fantasma */}
                     {post[0].author.name}
-                  </a>
+                  </a> */}
+                  <span className=" text-xs md:text-sm font-medium hover:text-primary transition hover:duration-300">
+                    {post[0].author.name}
+                  </span>
                 </div>
                 <p className="text-xs md:text-sm">
                   {/* July 21, 2023 */}

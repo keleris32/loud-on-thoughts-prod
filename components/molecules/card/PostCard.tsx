@@ -57,12 +57,15 @@ const PostCard = ({ post }: Props) => {
               </div>
             </div>
             <h5>
-              <Link
+              {/* <Link
                 href="/author"
                 className="text-base font-medium hover:text-primary transition hover:duration-300"
               >
                 {post.author.name}
-              </Link>
+              </Link> */}
+              <span className="text-base font-medium hover:text-primary transition hover:duration-300">
+                {post.author.name}
+              </span>
             </h5>
           </div>
           {/* <p className="text-base">July 21, 2023</p> */}
