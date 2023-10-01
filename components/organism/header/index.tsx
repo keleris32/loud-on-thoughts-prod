@@ -23,7 +23,19 @@ const Header = () => {
       <div className="container mx-auto font-work py-3">
         <div className="navbar grid grid-cols-12">
           <div className="col-span-3">
-            {theme === 'light' ? (
+            <Link href={`/`}>
+              <Image
+                src={
+                  theme === 'light'
+                    ? '/Loudonthoughtslogo.png'
+                    : '/LoudonthoughtsWhitelogo.png'
+                }
+                width={117.27}
+                height={70}
+                alt="Loudonthoughts logo"
+              />
+            </Link>
+            {/* {theme === 'light' ? (
               //  <Logo className={`text-base-content`} />
               <Link href={`/`}>
                 <Image
@@ -43,7 +55,7 @@ const Header = () => {
                   alt="Loudonthoughts logo"
                 />
               </Link>
-            )}
+            )} */}
           </div>
           <nav className="hidden xl:block col-span-6">
             <div className=" w-full flex items-center justify-center gap-10">

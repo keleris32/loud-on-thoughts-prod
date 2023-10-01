@@ -23,53 +23,90 @@ const query = groq`
 export default async function Home() {
   const posts: Post[] = await client.fetch(query);
 
-  // console.log(posts);
-
   return (
     <main className="container mx-auto px-3 sm:px-0">
-      {/* Banner Component */}
-      <section className="">
-        <BannerCard posts={posts} />
-      </section>
-
-      {/* Advertisement Component */}
-      {/* <section className="pt-12">
-        <Advertisement />
-      </section> */}
-
-      {/* Latest Post */}
-      <section className="my-20">
-        <h3 className="text-base-content font-bold text-2xl mt-8 mb-4 font-work leading-8">
-          Latest Post
-        </h3>
-        {/* <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[1, 2, 3, 4, 5].map((item: any) => (
-            <PostCard key={item} />
-          ))}
-        </div> */}
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts.map((post, index) => {
-            return (
-              <div key={post._id}>
-                {index === 0 ? null : <PostCard post={post} />}
-              </div>
-            );
-          })}
+      {posts.length === 0 ? (
+        <div className="w-full h-[300px] text-center">
+          <h1 className="font-semibold text-xl">There are no posts</h1>
         </div>
-        {/* <div className="flex items-center justify-center w-full mt-8">
-          <Link
-            href={`/blog`}
-            className="btn btn-outline btn-secondary text-secondary-content/60 font-work font-medium text-base"
-          >
-            View All Post
-          </Link>
-        </div> */}
-      </section>
+      ) : (
+        <>
+          <section className="">
+            <BannerCard posts={posts} />
+          </section>
 
-      {/* Advertisement Component */}
-      {/* <section className="mb-24">
-        <Advertisement />
-      </section> */}
+          <section className="my-20">
+            <h3 className="text-base-content font-bold text-2xl mt-8 mb-4 font-work leading-8">
+              Latest Post
+            </h3>
+
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {posts.map((post, index) => {
+                return (
+                  <div key={post._id}>
+                    {index === 0 ? null : <PostCard post={post} />}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        </>
+      )}
     </main>
   );
 }
+
+// export default async function Home() {
+//   const posts: Post[] = await client.fetch(query);
+
+//   // console.log(posts);
+
+//   return (
+//     <main className="container mx-auto px-3 sm:px-0">
+//       {}
+//       {/* Banner Component */}
+//       <section className="">
+//         <BannerCard posts={posts} />
+//       </section>
+
+//       {/* Advertisement Component */}
+//       {/* <section className="pt-12">
+//         <Advertisement />
+//       </section> */}
+
+//       {/* Latest Post */}
+//       <section className="my-20">
+//         <h3 className="text-base-content font-bold text-2xl mt-8 mb-4 font-work leading-8">
+//           Latest Post
+//         </h3>
+//         {/* <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+//           {[1, 2, 3, 4, 5].map((item: any) => (
+//             <PostCard key={item} />
+//           ))}
+//         </div> */}
+//         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+//           {posts.map((post, index) => {
+//             return (
+//               <div key={post._id}>
+//                 {index === 0 ? null : <PostCard post={post} />}
+//               </div>
+//             );
+//           })}
+//         </div>
+//         {/* <div className="flex items-center justify-center w-full mt-8">
+//           <Link
+//             href={`/blog`}
+//             className="btn btn-outline btn-secondary text-secondary-content/60 font-work font-medium text-base"
+//           >
+//             View All Post
+//           </Link>
+//         </div> */}
+//       </section>
+
+//       {/* Advertisement Component */}
+//       {/* <section className="mb-24">
+//         <Advertisement />
+//       </section> */}
+//     </main>
+//   );
+// }

@@ -30,8 +30,8 @@ const SinglePost = async ({ params: { slug } }: Props) => {
   return (
     <article>
       {post.length === 0 ? (
-        <div>
-          <h1>This post doesn't exist</h1>
+        <div className="w-full h-[300px] text-center">
+          <h1 className="font-semibold text-xl">This post doesn't exist</h1>
         </div>
       ) : (
         <section>
@@ -47,7 +47,7 @@ const SinglePost = async ({ params: { slug } }: Props) => {
                 {post[0].categories.map((category, index) => (
                   <span
                     key={index}
-                    className="btn !cursor-none no-animation hover:bg-primary hover:text-primary-content bg-primary/5 border-0 text-primary text-sm px-3 py-2 min-h-fit h-fit rounded-md w-fit capitalize font-medium"
+                    className="btn !cursor-default no-animation hover:bg-primary hover:text-primary-content bg-primary/5 border-0 text-primary text-sm px-3 py-2 min-h-fit h-fit rounded-md w-fit capitalize font-medium"
                   >
                     {category.title}
                   </span>
@@ -68,15 +68,13 @@ const SinglePost = async ({ params: { slug } }: Props) => {
                       />
                     </div>
                   </div>
-                  {/* <a
+                  <a
                     href="/author"
                     className=" text-xs md:text-sm font-medium hover:text-primary transition hover:duration-300"
                   >
+                    {/* Fantasma */}
                     {post[0].author.name}
-                  </a> */}
-                  <span className=" text-xs md:text-sm font-medium hover:text-primary transition hover:duration-300">
-                    {post[0].author.name}
-                  </span>
+                  </a>
                 </div>
                 <p className="text-xs md:text-sm">
                   {/* July 21, 2023 */}
