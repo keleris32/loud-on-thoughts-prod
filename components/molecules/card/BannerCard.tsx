@@ -25,7 +25,7 @@ const BannerCard = ({ posts }: Props) => {
           fill={true}
           src={urlForImage(posts[0].mainImage).url()}
           alt="Post Banner"
-          className="rounded-xl"
+          className="rounded-xl object-cover"
         />
       </div>
 

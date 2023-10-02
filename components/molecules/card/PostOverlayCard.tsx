@@ -20,29 +20,15 @@ const PostOverlayCard = ({ posts }: Props) => {
     <div className="card relative font-work">
       {/* Card Image */}
       <figure className="w-full h-[400px] xl:w-[1216px] xl:h-[500px]">
-        {/* <img
-          style={{ height: 500 }}
-          width="1216"
-          height="450"
-          alt={`banner_image`}
-          src="/chelsea-full-backs-banner.jpeg"
-          className="rounded-xl"
-        /> */}
         <Image
           fill={true}
           src={urlForImage(posts[0].mainImage).url()}
           alt="Post Banner"
-          className="rounded-xl"
+          className="rounded-xl object-cover"
         />
       </figure>
       <div className="card-body p-2 md:p-10 absolute bottom-0 w-full md:w-8/12 z-20">
         <div className="flex gap-x-3">
-          {/* <div className="w-fit text-white px-2.5 py-1 bg-primary text-xs md:text-sm rounded-md mb-2 md:mb-4 font-medium">
-            Sports
-          </div>
-          <div className="w-fit text-white px-2.5 py-1 bg-primary text-xs md:text-sm rounded-md mb-2 md:mb-4 font-medium">
-            Football
-          </div> */}
           {posts[0].categories.map((category, index) => (
             <span
               key={index}
@@ -71,7 +57,6 @@ const PostOverlayCard = ({ posts }: Props) => {
           <div className=" flex items-center gap-3">
             <div className="avatar">
               <div className="w-9 rounded-full">
-                {/* <img src="/einstein.jpeg" alt="avatar" /> */}
                 <img
                   src={urlForImage(posts[0].author.image).url()}
                   alt="avatar"
