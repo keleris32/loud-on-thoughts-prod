@@ -39,17 +39,10 @@ const PostOverlayCard = ({ posts }: Props) => {
           ))}
         </div>
         <h3>
-          {/* <a
-            href="/single-post"
-            className="text-neutral-content font-semibold text-xl md:text-2xl lg:text-4xl leading-5 md:leading-10 hover:text-primary transition hover:duration-500"
-          >
-            The Impact of the Inverted Fullbacks Era
-          </a> */}
           <Link
             href={`/post/${posts[0].slug.current}`}
             className="text-white font-semibold text-xl md:text-2xl lg:text-4xl leading-5 md:leading-10 hover:text-primary transition-all hover:duration-500"
           >
-            {/* The Impact of the Inverted Fullbacks Era */}
             {posts[0].title}
           </Link>
         </h3>
@@ -64,13 +57,6 @@ const PostOverlayCard = ({ posts }: Props) => {
               </div>
             </div>
             <h5>
-              {/* <Link
-                href="/author"
-                className="text-white text-base-content/60 text-xs md:text-base font-medium hover:text-primary transition hover:duration-300"
-              >
-               
-                {posts[0].author.name}
-              </Link> */}
               <span className="text-white text-base-content/60 text-xs md:text-base font-medium hover:text-primary transition hover:duration-300">
                 {/* Fantasma */}
                 {posts[0].author.name}
@@ -78,7 +64,6 @@ const PostOverlayCard = ({ posts }: Props) => {
             </h5>
           </div>
           <p className="text-white text-xs md:text-base">
-            {/* July 21, 2023 */}
             {new Date(posts[0]._createdAt).toLocaleDateString('en-Us', {
               day: 'numeric',
               month: 'long',

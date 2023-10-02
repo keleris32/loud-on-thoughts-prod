@@ -59,19 +59,12 @@ const BannerCard = ({ posts }: Props) => {
               </div>
             </div>
             <h6>
-              {/* <Link
-                href="/author"
-                className="text-base-content/60 text-xs md:text-base font-medium hover:text-primary transition hover:duration-300"
-              >
-                {posts[0].author.name}
-              </Link> */}
               <span className="text-base-content/60 text-xs md:text-base font-medium hover:text-primary transition hover:duration-300">
                 {posts[0].author.name}
               </span>
             </h6>
           </div>
           <p className="text-base-content/60 text-xs md:text-base">
-            {/* July 21, 2023 */}
             {new Date(posts[0]._createdAt).toLocaleDateString('en-Us', {
               day: 'numeric',
               month: 'long',
