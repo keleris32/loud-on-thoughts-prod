@@ -6,6 +6,7 @@ import useMode from '@/utils/themeMode';
 import MobileNav from './MobileNav';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 /**
  * Our Header is a reusable UI component that used to represent top navbar section of any website.
@@ -17,6 +18,7 @@ import { useState, useEffect } from 'react';
 const Header = () => {
   const { theme, setTheme, themes, hydrationError } = useMode();
   const [logo, setLogo] = useState('/Loudonthoughtslogo.png');
+  const pathname = usePathname();
 
   const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(false);
 
@@ -69,7 +71,11 @@ const Header = () => {
                 <div key={index}>
                   <Link
                     href={item.link}
-                    className="link link-hover text-base text-base-content/80 hover:text-primary transition hover:duration-300"
+                    className={`link link-hover text-base hover:text-primary transition hover:duration-300 ${
+                      pathname === item.link
+                        ? 'text-primary'
+                        : 'text-base-content/80'
+                    }`}
                   >
                     {item.name}
                   </Link>

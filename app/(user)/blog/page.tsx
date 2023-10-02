@@ -21,6 +21,9 @@ const query = groq`
   } | order(_createdAt desc)
 `;
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const BlogListing = async () => {
   const posts: Post[] = await client.fetch(query);
 

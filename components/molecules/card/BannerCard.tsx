@@ -20,14 +20,6 @@ interface Props {
 const BannerCard = ({ posts }: Props) => {
   return (
     <div className="relative rounded-xl font-work mb-24">
-      {/* <img
-        style={{ height: 625 }}
-        width="1216"
-        height="600"
-        alt={`banner_image`}
-        src="/chelsea-full-backs-banner.jpeg"
-        className="rounded-xl"
-      /> */}
       <div className="w-full h-[400px] xl:w-[1216px] xl:h-[500px]">
         <Image
           fill={true}
@@ -36,14 +28,7 @@ const BannerCard = ({ posts }: Props) => {
           className="rounded-xl"
         />
       </div>
-      {/* <img
-        style={{ height: 525 }}
-        width="1216"
-        height="525"
-        alt={`banner_image`}
-        src={urlForImage(posts[0].mainImage).url()}
-        className="rounded-xl"
-      /> */}
+
       <div className="absolute -bottom-16 left-4 md:left-14 rounded-xl p-4 md:p-10 bg-base-100 w-10/12 md:w-7/12 lg:w-6/12 shadow-[0_12px_24px_-6px] shadow-base-content/20">
         <div className="flex gap-x-3">
           {posts[0].categories.map((category, index) => (
@@ -54,19 +39,12 @@ const BannerCard = ({ posts }: Props) => {
               {category.title}
             </span>
           ))}
-          {/* <div className="w-fit text-primary-content px-2.5 py-1 bg-primary text-xs md:text-sm rounded-md mb-4 font-medium">
-            Sports
-          </div>
-          <div className="w-fit text-primary-content px-2.5 py-1 bg-primary text-xs md:text-sm rounded-md mb-4 font-medium">
-            Football
-          </div> */}
         </div>
         <h3>
           <Link
             href={`/post/${posts[0].slug.current}`}
             className="text-base-content font-semibold text-xl md:text-2xl lg:text-4xl leading-5 md:leading-10 hover:text-primary transition-all hover:duration-500"
           >
-            {/* The Impact of the Inverted Fullbacks Era */}
             {posts[0].title}
           </Link>
         </h3>
@@ -74,7 +52,6 @@ const BannerCard = ({ posts }: Props) => {
           <div className=" flex items-center gap-3">
             <div className="avatar">
               <div className="w-9 rounded-full">
-                {/* <img src="/einstein.jpeg" alt="avatar" /> */}
                 <img
                   src={urlForImage(posts[0].author.image).url()}
                   alt="avatar"

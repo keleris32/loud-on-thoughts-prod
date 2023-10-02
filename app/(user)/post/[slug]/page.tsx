@@ -6,16 +6,20 @@ import React from 'react';
 import { PortableText } from '@portabletext/react';
 import { RichText } from '@/components/molecules/richText';
 
+export const metadata = {
+  title: 'Single Post | LoudOnThoughts',
+  description: 'Get a glimpse into the mind and insight of LoudOnThoughts',
+};
+
 type Props = {
   params: {
     slug: string;
   };
 };
 
-export const metadata = {
-  title: 'Single Post | LoudOnThoughts',
-  description: 'Get a glimpse into the mind and insight of the Fantasma',
-};
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const SinglePost = async ({ params: { slug } }: Props) => {
   const query = groq`
   *[_type=='post' && slug.current == $slug] {
@@ -31,7 +35,9 @@ const SinglePost = async ({ params: { slug } }: Props) => {
     <article>
       {post.length === 0 ? (
         <div className="w-full h-[300px] text-center">
-          <h1 className="font-semibold text-xl">This post doesn't exist</h1>
+          <h1 className="font-semibold text-xl">
+            No post exist with this slug: {`${slug}`}
+          </h1>
         </div>
       ) : (
         <section>

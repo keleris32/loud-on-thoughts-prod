@@ -11,16 +11,22 @@ export const metadata = {
   description: 'Get a glimpse into the mind and insight of the Fantasma',
 };
 
-const query = groq`
-  *[_type=='post'] {
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+const Author = async ({ params: { slug } }: Props) => {
+  const query = groq`
+  *[_type=='post' && author.slug.current == $slug] {
     ...,
     author->,
     categories[]->
   } | order(_createdAt desc)
 `;
 
-const Author = async () => {
-  const posts: Post[] = await client.fetch(query);
+  const posts: Post[] = await client.fetch(query, { slug });
 
   console.log(posts);
 
